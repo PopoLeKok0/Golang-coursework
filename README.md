@@ -1,4 +1,4 @@
-![Golang Logo](Golang_logo.png)
+![Golang Logo](golang_logo.png)
 # Golang-coursework 🚀
 
 Welcome to my repository for **university coursework**, where I showcase labs, quizzes, and assignments completed as part of my learning journey with **Go (Golang)**. 🐹
