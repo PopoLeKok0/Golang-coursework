@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" modified="2024-02-08">
+  <diagram id="movie-recommendation-system" name="Page-1">
+    <mxGraphModel dx="1050" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Movie Class -->
+        <mxCell id="Movie" value="Movie" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="120" y="60" width="210" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Movie_attrs" value="- movieID: int&#10;- title: String&#10;- genres: List&lt;String&gt;&#10;- likedByCount: int" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="Movie">
+          <mxGeometry y="30" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Movie_methods" value="+ getId(): int&#10;+ getTitle(): String&#10;+ getGenres(): List&lt;String&gt;&#10;+ getLikedByCount(): int&#10;+ incrementLikedBy(): void" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="Movie">
+          <mxGeometry y="100" width="210" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- User Class -->
+        <mxCell id="User" value="User" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="400" y="60" width="440" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="User_attrs" value="- userId: int&#10;- likedMovies: Set&lt;Integer&gt;&#10;- dislikedMovies: Set&lt;Integer&gt;" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="User">
+          <mxGeometry y="30" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="User_methods" value="+ getUserId(): int&#10;+ getLikedMovies(): Set&lt;Integer&gt;&#10;+ getDislikedMovies(): Set&lt;Integer&gt;&#10;+ addLikedMovie(movieId: int): void&#10;+ addDislikedMovie(movieId: int): void&#10;+ hasRated(movieId: int): boolean" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="User">
+          <mxGeometry y="100" width="440" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Recommendation Class -->
+        <mxCell id="Recommendation" value="Recommendation" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Recommendation_attrs" value="- user: User&#10;- movie: Movie&#10;- probability: double&#10;- nUsers: int" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="Recommendation">
+          <mxGeometry y="30" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Recommendation_methods" value="+ getUser(): User&#10;+ getMovie(): Movie&#10;+ getProbability(): double&#10;+ getNUsers(): int" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="Recommendation">
+          <mxGeometry y="100" width="440" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- RecommendationEngine Class -->
+        <mxCell id="RecommendationEngine" value="RecommendationEngine" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="220" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Engine_attrs" value="- movies: Map&lt;Integer, Movie&gt;&#10;- users: Map&lt;Integer, User&gt;&#10;- R: double&#10;- K: int&#10;- N: int" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="RecommendationEngine">
+          <mxGeometry y="30" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Engine_methods" value="+ generateRecommendations()&#10;- jaccardSimilarity()&#10;- readMovies()&#10;- readRatings()" style="text;strokeColor=none;fillColor=none;" vertex="1" parent="RecommendationEngine">
+          <mxGeometry y="120" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="engine_to_movie" value="" style="endArrow=diamond;endFill=1;endSize=12;html=1;" edge="1" parent="1" source="Movie" target="RecommendationEngine">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="230" y="260" as="sourcePoint"/>
+            <mxPoint x="230" y="320" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="engine_to_user" value="" style="endArrow=diamond;endFill=1;endSize=12;html=1;" edge="1" parent="1" source="User" target="RecommendationEngine">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="620" y="260" as="sourcePoint"/>
+            <mxPoint x="340" y="420" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rec_to_user" value="" style="endArrow=open;endFill=0;endSize=12;html=1;" edge="1" parent="1" source="Recommendation" target="User">
+          <mxGeometry width="160" relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rec_to_movie" value="" style="endArrow=open;endFill=0;endSize=12;html=1;" edge="1" parent="1" source="Recommendation" target="Movie">
+          <mxGeometry width="160" relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
